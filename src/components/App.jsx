@@ -29,7 +29,7 @@ class App extends Component{
   if (prevQuery !== nextQuery) {
     this.getImages();
     }
-   
+   console.log('hi')
   }
 
 getImages=()=>{

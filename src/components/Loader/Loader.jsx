@@ -1,16 +1,15 @@
-import { FadingBalls } from "react-cssfx-loading";
-import Div from "./Loader.styled";
+
+
+import {TripleMaze } from 'react-spinner-animated';
+import 'react-spinner-animated/dist/index.css'
+
 
 const LoaderSpinner = () => {
-  return (
-      <Div>
-    <FadingBalls  
-     width="50px" 
-     height="50px" 
-     duration="0.5s" />
-     </Div>
-  );
-};
+  return( 
+  <TripleMaze  text={"Loading..."} bgColor={"white"} 
+    center={true} width={"150px"} height={"150px"}/>
+)
+  }
 
 export default LoaderSpinner;
 

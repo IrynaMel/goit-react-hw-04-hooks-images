@@ -1,37 +1,32 @@
-import { Component} from 'react';
+import { useState} from 'react';
 import {Sidebar, SearchForm, Button, Input} from './Searchbar.styled';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-class Searchbar extends Component{
-    state={
-        query: '',
-    };
+export default function SearchBar ({onSubmit}){
+  const [query, setQuery] = useState ('');
 
+
+  const handlerChangeSearch=e=>{
+    setQuery( e.currentTarget.value.toLowerCase())
+ }
+
+ const  handleSubmit = e =>{
+    e.preventDefault();
     
-
-    handlerChangeSearch=e=>{
-       this.setState({query: e.currentTarget.value.toLowerCase()})
+    if(query.trim()=== ''){
+        toast.error('Enter your query');
+        return
     }
+    onSubmit(query)
+    setQuery('')
+}
 
-    handleSubmit = e =>{
-        e.preventDefault();
-        
-        if(this.state.query.trim()=== ''){
-            toast.error('Enter your query');
-            return
-        }
-        this.props.onSubmit(this.state.query)
-        this.setState({query: ''})
-    }
-
-    render(){
-        return(
-
+ return(
   <Sidebar>
    <header >
   <SearchForm
-  onSubmit={this.handleSubmit}>
+  onSubmit={handleSubmit}>
     <Button type="submit">
       <span>Search</span>
     </Button>
@@ -41,14 +36,12 @@ class Searchbar extends Component{
       autocomplete="off"
       autoFocus
       placeholder="Search images and photos"
-      value = {this.state.query}
-      onChange={this.handlerChangeSearch}
+      value = {query}
+      onChange={handlerChangeSearch}
     />
     
   </SearchForm>
 </header>
 </Sidebar>
         )
-    }
 }
-export default Searchbar

@@ -1,4 +1,5 @@
 import { Li, Img } from './ImageGalleryItem.styled';
+import PropTypes from "prop-types";
 
 const ImageGalleryItem = ({ src, alt,openModal }) => {
   return (
@@ -10,5 +11,11 @@ const ImageGalleryItem = ({ src, alt,openModal }) => {
     </Li>
   );
 };
+
+ImageGalleryItem.propTypes ={
+  scr: PropTypes.string,
+  alt: PropTypes.string,
+  openModal: PropTypes.func
+}
 
 export default ImageGalleryItem;
